@@ -1,0 +1,18 @@
+#!/bin/bash
+curious...did you install a server version or desktop version. for me the server version had the same error until i did the few extra steps. basically this part:
+
+sudo apt-get install build-essential xserver-xorg p7zip xorg-dev libgtk-3-dev xdm
+sed -i '/Driver/a Option "Interactive" "False"' /etc/X11/xorg.conf
+
+//Add the following lines to /etc/X11/xdm/Xsetup
+echo "export PATH=/bin:/usr/bin:/sbin
+export HOME=/root
+export DISPLAY=:0
+xset -dpms
+xset s off
+xhost +" >> /etc/X11/xdm/Xsetup
+
+sudo nvidia-xconfig -a --allow-empty-initial-configuration --cool-bits=28 --use-display-device="DFP-0" --connected-monitor="DFP-0" --custom-edid="DFP-0:/etc/X11/dfp-edid.bin"
+
+//will reboot the server so that the configuration works
+sudo reboot
