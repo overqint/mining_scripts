@@ -1,6 +1,5 @@
 #!/bin/bash
-curious...did you install a server version or desktop version. for me the server version had the same error until i did the few extra steps. basically this part:
-
+//some configuration for ubuntu server
 sudo apt-get install build-essential xserver-xorg p7zip xorg-dev libgtk-3-dev xdm
 sed -i '/Driver/a Option "Interactive" "False"' /etc/X11/xorg.conf
 
