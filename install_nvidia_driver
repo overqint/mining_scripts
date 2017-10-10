@@ -1,0 +1,9 @@
+#!/bin/sh
+//install 378 branch driver 
+sudo apt-get purge nvidia-*
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get update
+sudo apt-get install nvidia-378
+
+//not sure if this is actually necessary
+sudo update-grub
