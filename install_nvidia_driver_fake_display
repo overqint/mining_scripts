@@ -1,0 +1,11 @@
+#!/bin/sh
+//install 378 branch driver 
+sudo apt-get purge nvidia-*
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get update
+sudo apt-get install nvidia-378
+
+//not sure if this is actually necessary
+sudo update-grub
+//Enable overclocking with by setting cool-bits in the nvidia-xconfig and "fake" a display being connected to all cards.
+sudo nvidia-xconfig -a --allow-empty-initial-configuration --cool-bits=28 --use-display-device="DFP-0" --connected-monitor="DFP-0"
